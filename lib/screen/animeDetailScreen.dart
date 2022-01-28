@@ -89,7 +89,7 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                      margin: EdgeInsets.only(top: 20.0),
                                      alignment: Alignment.topRight,
                                     child: Text(
-                                      'Popularity',
+                                      'Popularityyyy',
                                       style: GoogleFonts.montserrat(
                                             fontSize: 16,
                                       )
