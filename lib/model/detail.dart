@@ -7,8 +7,10 @@ class animeDetail {
   final int malID;
   final int ranking;
   final int popularity;
+  final List<Studios> studios;
 
-  const animeDetail({
+
+  animeDetail({
     required this.animeTitle,
     required this.jpTitle,
     required this.malID,
@@ -17,6 +19,7 @@ class animeDetail {
     required this.genres,
     required this.ranking,
     required this.popularity,
+    required this.studios,
   });
 
   factory animeDetail.fromJson(Map<String, dynamic> json) => animeDetail (
@@ -28,6 +31,8 @@ class animeDetail {
       ranking: json['rank']?? 0,
       popularity: json['popularity']?? 0,
       synopsis: json['synopsis']?? '',
+      studios: new List<Studios>.from(json["studios"].map((x) => Studios.fromJson(x))),
+      // expanded : true,
   );
 }
 
@@ -56,5 +61,33 @@ class Genre {
         "type": type,
         "name": name,
         "url": url,
+    };
+}
+
+class Studios {
+    int studio_malId;
+    String studio_type;
+    String studio_name;
+    String  studio_url;
+
+    Studios({
+      required  this. studio_malId,
+      required  this. studio_type,
+      required  this. studio_name,
+      required  this. studio_url,
+    });
+
+    factory Studios.fromJson(Map<String, dynamic> json) => new Studios(
+         studio_malId: json["mal_id"],
+         studio_type: json["type"],
+         studio_name: json["name"],
+         studio_url: json["url"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "mal_id":  studio_malId,
+        "type":  studio_type,
+        "name":  studio_name,
+        "url":  studio_url,
     };
 }
