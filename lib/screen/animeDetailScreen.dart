@@ -89,7 +89,7 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                      margin: EdgeInsets.only(top: 20.0),
                                      alignment: Alignment.topRight,
                                     child: Text(
-                                      'Popularityyyy',
+                                      'Popularity',
                                       style: GoogleFonts.montserrat(
                                             fontSize: 16,
                                       )
@@ -130,6 +130,9 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                       fontSize: 14,
                                     ),
                                   ),
+                                ),
+                                SizedBox(
+                                  height: 10,
                                 ),
                                  ExpansionTile(
                                   tilePadding: EdgeInsets.all(0),
@@ -175,6 +178,34 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                         itemBuilder: (context, index){
                                           return Column(
                                             children: [
+                                              Row(
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      right: 5
+                                                    ),
+                                                    child: Text('Episode(s) : ',
+                                                    style: GoogleFonts.montserrat(
+                                                        fontSize: 14,
+                                                        fontWeight: FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: EdgeInsets.only(
+                                                      right: 10
+                                                    ),
+                                                    child: Text('${snapshot.data?.episodes}',
+                                                    style: GoogleFonts.montserrat(
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                              SizedBox(
+                                                height: 20,
+                                              ),
                                               Row(
                                                 children: [
                                                   Padding(
