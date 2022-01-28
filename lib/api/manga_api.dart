@@ -34,7 +34,7 @@ class topmangalistApi {
     final respBody = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      // print(respBody);
+      print(respBody);
       var topMangasJson = respBody['data'] as List;
       return topMangasJson.map((topmanga) => topManga.fromJson(topmanga)).toList();
     } else {

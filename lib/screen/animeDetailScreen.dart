@@ -138,8 +138,11 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                     itemBuilder: (context, index){
                                       return Padding(
                                         padding: EdgeInsets.only(right: 5),
-                                        child:Chip(
-                                        label: Text('${snapshot.data?.genres[index].name}')
+                                        child: TextButton(
+                                          child: Text('${snapshot.data?.genres[index].name}'),
+                                          onPressed: (){
+                                            print('${snapshot.data?.genres[index].malId}');
+                                          },
                                       ));
                                     },
                                   ),

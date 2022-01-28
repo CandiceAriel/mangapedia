@@ -13,6 +13,7 @@ class topManga {
     title: json['title']??"",
     malId: json['mal_id']??'',
     img_URL: json['images']['jpg']['image_url']??"",
+
   );
     
 }

@@ -7,6 +7,7 @@ import '../model/topAnime.dart';
 import '../api/anime_api.dart';
 import '../widget/mangaCard.dart';
 import '../widget/animeCard.dart';
+import '../widget/animeRecCard.dart';
 
 //Anime schedule
 class animeList extends StatefulWidget {
@@ -150,6 +151,83 @@ class _topanimeListState extends State<topanimeList> {
                               title: '${snapshot.data?[index].ani_title}',
                               imgURL: '${snapshot.data?[index].ani_img_URL}',
                               popularity: int.parse('${snapshot.data?[index].ani_popularity}'),
+                            );
+                          }
+                        ),
+                      )
+                    ],
+                  );  
+            }
+          }
+        ),
+        ]
+      )
+    );
+  }
+}
+
+class animerecList extends StatefulWidget {
+  animerecList({Key? key}) : super(key: key);
+
+  @override
+  _animerecListState createState() => _animerecListState();
+}
+
+class _animerecListState extends State<animerecList> {
+
+  @override
+  void initState() {
+    super.initState();
+    animeRecApi.getAnimeRec(38450);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //height: 400,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: Container(
+              height: 30,
+              child: Text(
+                'Anime Recommendations',
+                style: GoogleFonts.montserrat(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ),
+          FutureBuilder<List<AnimeRecommendation>>(
+          future: animeRecApi.getAnimeRec(38450),
+          builder: (context, snapshot) {
+            
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Center(
+                  child: Text("Loading...")
+                );
+              default:
+                if(snapshot.hasError || !snapshot.hasData){
+                  return Center(
+                    child: Text("404 Not Found")
+                    
+                  ); 
+                } else 
+                  return Column(
+                    children: [
+                      
+                      Container(
+                        height: 350,
+                        child:  ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            return animeRecCard(
+                              mal_ID: int.parse('${snapshot.data?[index].malID}'),
+                              title: '${snapshot.data?[index].title}',
+                              imgURL: '${snapshot.data?[index].imgURL}',
                             );
                           }
                         ),

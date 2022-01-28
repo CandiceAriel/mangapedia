@@ -20,9 +20,10 @@ class home extends StatelessWidget {
             child: Column(
               children: [
                 //mangaList(),
-                topmangaList(),
+                //topmangaList(),
                 //animeList(),
-                //topanimeList(),
+                topanimeList(),
+                animerecList(),
               ],
             ),
           ),

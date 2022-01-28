@@ -58,6 +58,21 @@ class topanimelistApi {
 
   }
 
+  class animeRecApi {
+  static Future<List<AnimeRecommendation>> getAnimeRec(int recaniID) async{
+    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/anime' + '/${recaniID}' + '/recommendations'));
+    final respBody = json.decode(response.body);
+
+    if (response.statusCode == 200) {
+      var animeRecommendationJson = respBody['data'] as List;
+      return animeRecommendationJson.map((animerecommendation) => AnimeRecommendation.fromJson(animerecommendation)).toList();
+    } else {
+      throw Exception('Failed to load anime');
+    }
+
+  }
+}
+
 
 // class animeDetailApi{
 //   Future<AnimeDetail> getAnimeDetail(String anime_malID) async{

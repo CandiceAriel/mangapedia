@@ -18,3 +18,21 @@ class Anime {
     anime_popularity: json['popularity']??0,
   );
 }
+
+class AnimeRecommendation {
+  final String title;
+  final String imgURL;
+  final int malID;
+
+  const AnimeRecommendation({
+    required this.title,
+    required this.malID,
+    required this.imgURL,
+  });
+
+  factory AnimeRecommendation.fromJson(Map<String, dynamic> json) => AnimeRecommendation(
+    title: json['entry']['title']??"",
+    malID: json['entry']['mal_id']??0,
+    imgURL: json['entry']['images']['jpg']['image_url']??"",
+  );
+}
