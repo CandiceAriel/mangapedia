@@ -3,6 +3,7 @@ class animeDetail {
   final String jpTitle;
   final String imgURL;
   final String synopsis;
+  final List<Producers> producers;
   final List<Genre> genres;
   final int malID;
   final int ranking;
@@ -22,6 +23,7 @@ class animeDetail {
     required this.popularity,
     required this.studios,
     required this.episodes,
+    required this.producers,
   });
 
   factory animeDetail.fromJson(Map<String, dynamic> json) => animeDetail (
@@ -35,6 +37,7 @@ class animeDetail {
       synopsis: json['synopsis']?? '',
       studios: new List<Studios>.from(json["studios"].map((x) => Studios.fromJson(x))),
       episodes: json['episodes']?? 0,
+      producers: new List<Producers>.from(json["producers"].map((x) => Producers.fromJson(x))),
   );
 }
 
@@ -91,5 +94,33 @@ class Studios {
         "type":  studio_type,
         "name":  studio_name,
         "url":  studio_url,
+    };
+}
+
+class Producers {
+    int prod_malId;
+    String prod_type;
+    String prod_name;
+    String  prod_url;
+
+    Producers({
+      required  this.prod_malId,
+      required  this.prod_type,
+      required  this.prod_name,
+      required  this.prod_url,
+    });
+
+    factory Producers.fromJson(Map<String, dynamic> json) => new Producers(
+        prod_malId: json["mal_id"],
+        prod_type: json["type"],
+        prod_name: json["name"],
+        prod_url: json["url"],
+    );
+
+    Map<String, dynamic> toJson() => {
+        "mal_id":  prod_malId,
+        "type":  prod_type,
+        "name":  prod_name,
+        "url":  prod_url,
     };
 }
