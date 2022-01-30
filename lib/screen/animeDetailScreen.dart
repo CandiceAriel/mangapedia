@@ -209,7 +209,7 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                               ),
                                               Row(
                                                 children: [
-                                                  Text('Genre(s) : ',
+                                                  Text('Genres : ',
                                                   style: GoogleFonts.montserrat(
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.bold,
