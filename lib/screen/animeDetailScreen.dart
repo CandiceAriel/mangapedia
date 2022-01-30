@@ -217,7 +217,7 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                                   ),
                                                   Flexible(
                                                     child: Container(
-                                                      padding: EdgeInsets.only(left: 10),
+                                                      padding: EdgeInsets.only(left: 20),
                                                       height: 50.0,
                                                       child:  ListView.builder(
                                                         scrollDirection: Axis.horizontal,
@@ -255,7 +255,7 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                                   ),
                                                   Flexible(
                                                     child: Container(
-                                                      padding: EdgeInsets.only(left: 20),
+                                                      padding: EdgeInsets.only(left: 15),
                                                       height: 50.0,
                                                       child:  ListView.builder(
                                                         scrollDirection: Axis.horizontal,
