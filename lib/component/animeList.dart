@@ -242,3 +242,81 @@ class _animerecListState extends State<animerecList> {
     );
   }
 }
+
+class recentanimerecList extends StatefulWidget {
+  recentanimerecList({Key? key}) : super(key: key);
+
+  @override
+  _recentanimerecListState createState() => _recentanimerecListState();
+}
+
+class _recentanimerecListState extends State<recentanimerecList> {
+
+  @override
+  void initState() {
+    super.initState();
+    RecentAnimeRecommendationApi.getRecentMangaRec();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      //height: 400,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(5),
+            child: Container(
+              height: 30,
+              child: Text(
+                'Anime Recommendations',
+                style: GoogleFonts.montserrat(
+                  fontSize: 24,
+                ),
+              ),
+            ),
+          ),
+          FutureBuilder<List<RecentAnimeRec>>(
+          future: RecentAnimeRecommendationApi.getRecentMangaRec(),
+          builder: (context, snapshot) {
+            
+            switch (snapshot.connectionState) {
+              case ConnectionState.waiting:
+                return Center(
+                  child: Text("Loading...")
+                );
+              default:
+                if(snapshot.hasError || !snapshot.hasData){
+                  print('${snapshot.error}');
+                  return Center(
+                    child: Text("404 Not Found")
+                    
+                  ); 
+                } else 
+                  return Column(
+                    children: [
+                      
+                      Container(
+                        height: 350,
+                        child:  ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            return animeRecCard(
+                              mal_ID: int.parse('${snapshot.data?[index].anirec_malID}'),
+                              title: '${snapshot.data?[index].anirec_title}'.toString(),
+                              imgURL: '${snapshot.data?[index].anirec_imgURL}'.toString(),
+                            );
+                          }
+                        ),
+                      )
+                    ],
+                  );  
+            }
+          }
+        ),
+        ]
+      )
+    );
+  }
+}

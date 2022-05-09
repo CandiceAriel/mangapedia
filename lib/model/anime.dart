@@ -36,3 +36,21 @@ class AnimeRecommendation {
     imgURL: json['entry']['images']['jpg']['image_url']??"",
   );
 }
+
+class RecentAnimeRec {
+  final String  anirec_title;
+  final String  anirec_imgURL;
+  final int  anirec_malID;
+
+  const RecentAnimeRec({
+    required this. anirec_title,
+    required this. anirec_malID,
+    required this. anirec_imgURL,
+  });
+
+  factory RecentAnimeRec.fromJson(Map<String, dynamic> json) => RecentAnimeRec(
+    anirec_title: json['entry']['title']??"",
+    anirec_malID: json['entry']['mal_id']??0,
+    anirec_imgURL: json['entry']['images']['jpg']['image_url']??"",
+  );
+}

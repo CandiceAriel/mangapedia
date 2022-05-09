@@ -173,158 +173,152 @@ class _animeDetailScreenState extends State<animeDetailScreen> {
                                   children: <Widget>[
                                     Container(
                                       padding: EdgeInsets.all(10.0),
-                                      child: ListView.builder(
-                                        shrinkWrap: true,
-                                        itemCount: snapshot.data!.studios.length,
-                                        itemBuilder: (context, index){
-                                          return Column(
+                                      child: Column(
+                                        children: [
+                                          Row(
                                             children: [
-                                              Row(
-                                                children: [
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                      right: 0
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  right: 0
+                                                ),
+                                                child: Text('Episodes : ',
+                                                  style: GoogleFonts.montserrat(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
                                                     ),
-                                                    child: Text('Episodes : ',
+                                                  ),
+                                              ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                    left: 15
+                                                  ),
+                                                  child: Text('${snapshot.data?.episodes}',
                                                     style: GoogleFonts.montserrat(
                                                         fontSize: 14,
-                                                        fontWeight: FontWeight.bold,
-                                                      ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                      left: 15
-                                                    ),
-                                                    child: Text('${snapshot.data?.episodes}',
-                                                    style: GoogleFonts.montserrat(
-                                                        fontSize: 14,
-                                                      ),
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                              SizedBox(
-                                                height: 10,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Text('Genres : ',
-                                                  style: GoogleFonts.montserrat(
+                                                )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Genres : ',
+                                                style: GoogleFonts.montserrat(
                                                       fontSize: 14,
                                                       fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Container(
-                                                      padding: EdgeInsets.only(left: 20),
-                                                      height: 50.0,
-                                                      child:  ListView.builder(
-                                                        scrollDirection: Axis.horizontal,
-                                                        shrinkWrap: true,
-                                                        itemCount: snapshot.data!.genres.length,
-                                                        itemBuilder: (context, index){
-                                                          return Padding(
-                                                            padding: EdgeInsets.only(right: 5),
-                                                            child: TextButton(
-                                                              child: Text(
-                                                                '${snapshot.data?.genres[index].name}',
-                                                                style: GoogleFonts.montserrat(
-                                                                  fontSize: 14,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ),
-                                                              onPressed: (){
-                                                                print('${snapshot.data?.genres[index].malId}');
-                                                              },
-                                                            )
-                                                          );
-                                                        },
-                                                      ),
-                                                    )
-                                                  )
-                                                ],
+                                                ),
                                               ),
-                                              Row(
-                                                children: [
-                                                  Text('Studios : ',
-                                                  style: GoogleFonts.montserrat(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
+                                              Flexible(
+                                                child: Container(
+                                                  padding: EdgeInsets.only(left: 20),
+                                                  height: 50.0,
+                                                  child:  ListView.builder(
+                                                    scrollDirection: Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount: snapshot.data!.genres.length,
+                                                    itemBuilder: (context, index){
+                                                      return Padding(
+                                                        padding: EdgeInsets.only(right: 5),
+                                                        child: TextButton(
+                                                          child: Text(
+                                                            '${snapshot.data?.genres[index].name}',
+                                                            style: GoogleFonts.montserrat(
+                                                              fontSize: 14,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ),
+                                                          onPressed: (){
+                                                            print('${snapshot.data?.genres[index].malId}');
+                                                          },
+                                                        )
+                                                      );
+                                                    },
                                                   ),
-                                                  Flexible(
-                                                    child: Container(
-                                                      padding: EdgeInsets.only(left: 15),
-                                                      height: 50.0,
-                                                      child:  ListView.builder(
-                                                        scrollDirection: Axis.horizontal,
-                                                        shrinkWrap: true,
-                                                        itemCount: snapshot.data!.studios.length,
-                                                        itemBuilder: (context, index){
-                                                          return Padding(
-                                                            padding: EdgeInsets.only(right: 5),
-                                                            child: TextButton(
-                                                              child: Text(
-                                                                '${snapshot.data?.studios[index].studio_name}',
-                                                                style: GoogleFonts.montserrat(
-                                                                  fontSize: 14,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ),
-                                                              onPressed: (){
-                                                                print('${snapshot.data?.producers[index].prod_name}');
-                                                              },
-                                                            )
-                                                          );
-                                                        },
-                                                      ),
-                                                    )
-                                                  )
-                                                ],
-                                              ),
-                                            Row(
-                                                children: [
-                                                  Text('Producers : ',
-                                                  style: GoogleFonts.montserrat(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Container(
-                                                      height: 50.0,
-                                                      child:  ListView.builder(
-                                                        scrollDirection: Axis.horizontal,
-                                                        shrinkWrap: true,
-                                                        itemCount: snapshot.data!.producers.length,
-                                                        itemBuilder: (context, index){
-                                                          return Padding(
-                                                            padding: EdgeInsets.only(right: 5),
-                                                            child: TextButton(
-                                                              child: Text(
-                                                                '${snapshot.data?.producers[index].prod_name}',
-                                                                style: GoogleFonts.montserrat(
-                                                                  fontSize: 14,
-                                                                  color: Colors.black,
-                                                                ),
-                                                              ),
-                                                              onPressed: (){
-                                                                print('${snapshot.data?.producers[index].prod_name}');
-                                                              },
-                                                            )
-                                                          );
-                                                        },
-                                                      ),
-                                                    )
-                                                  )
-                                                ],
+                                                )
                                               )
                                             ],
-                                          );
-                                        },
-                                      ),
-                                    )
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Studios : ',
+                                                style: GoogleFonts.montserrat(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                  padding: EdgeInsets.only(left: 15),
+                                                  height: 50.0,
+                                                  child:  ListView.builder(
+                                                    scrollDirection: Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount: snapshot.data!.studios.length,
+                                                    itemBuilder: (context, index){
+                                                      return Padding(
+                                                        padding: EdgeInsets.only(right: 5),
+                                                        child: TextButton(
+                                                          child: Text(
+                                                            '${snapshot.data?.studios[index].studio_name}',
+                                                            style: GoogleFonts.montserrat(
+                                                              fontSize: 14,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ),
+                                                          onPressed: (){
+                                                            print('${snapshot.data?.producers[index].prod_name}');
+                                                          },
+                                                        )
+                                                      );
+                                                    },
+                                                  ),
+                                                )
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              Text('Producers : ',
+                                                style: GoogleFonts.montserrat(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                  height: 50.0,
+                                                  child:  ListView.builder(
+                                                    scrollDirection: Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount: snapshot.data!.producers.length,
+                                                    itemBuilder: (context, index){
+                                                      return Padding(
+                                                        padding: EdgeInsets.only(right: 5),
+                                                        child: TextButton(
+                                                          child: Text(
+                                                            '${snapshot.data?.producers[index].prod_name}',
+                                                            style: GoogleFonts.montserrat(
+                                                              fontSize: 14,
+                                                              color: Colors.black,
+                                                            ),
+                                                          ),
+                                                          onPressed: (){
+                                                            print('${snapshot.data?.producers[index].prod_name}');
+                                                          },
+                                                        )
+                                                      );
+                                                    },
+                                                  ),
+                                                )
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      )
+                                    ),
                                   ],
                                 ),
                               ],

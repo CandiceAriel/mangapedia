@@ -14,7 +14,7 @@ void toDetailsScreen(BuildContext context, int malID) {
 }
 
 class mangaDetailScreen extends StatefulWidget {
-  final mangaID;
+  final int mangaID;
 
   const mangaDetailScreen({Key? key, required this.mangaID}) : super(key: key);
 
@@ -129,44 +129,150 @@ class _mangaDetailScreenState extends State<mangaDetailScreen> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  height:100,
-                                  child: ListView.builder(
-                                    scrollDirection: Axis.horizontal,
-                                    shrinkWrap: true,
-                                    itemCount: snapshot.data!.genres.length,
-                                    itemBuilder: (context, index){
-                                      return Padding(
-                                        padding: EdgeInsets.only(right: 5),
-                                        child:Chip(
-                                        label: Text('${snapshot.data?.genres[index].name}')
-                                      ));
-                                    },
-                                  ),
+                                SizedBox(
+                                  height: 10,
                                 ),
-                                Container(
-                                  alignment: Alignment.topLeft,
-                                  child: Column (
-                                    children: [
-                                      Text(
-                                        'Synopsis',
-                                        style: GoogleFonts.montserrat(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
+                                 ExpansionTile(
+                                  tilePadding: EdgeInsets.all(0),
+                                  title: Text(
+                                    'Synopsis',
+                                    style: TextStyle(
+                                      fontSize: 16.0, 
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black
+                                    ),
+                                  ),
+                                  children: [
+                                    Container(
+                                      margin:EdgeInsets.only(bottom: 10),
+                                      alignment: Alignment.topLeft,
+                                      child:
+                                          Text(
+                                            '${snapshot.data!.synopsis}',
+                                            style: GoogleFonts.montserrat(
+                                              height:  2,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                    )
+                                  ],
+                                ),
+                                ExpansionTile(
+                                  tilePadding: EdgeInsets.all(0),
+                                  collapsedTextColor: Colors.black,
+                                  title: Text(
+                                    'Information',
+                                    style: TextStyle(
+                                      fontSize: 16.0, 
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black
+                                    ),
+                                  ),
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(10.0),
+                                      child: Column(
+                                        children: [
+                                          //Volume and CHAPTERS
+                                          Row(
+                                              children: [
+                                                Text('Authors : ',
+                                                  style: GoogleFonts.montserrat(
+                                                    fontSize: 14,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                ),
+                                                Padding(
+                                                      padding: EdgeInsets.only(right: 5),
+                                                      child: Text('${snapshot.data!.chapter}'),
+                                                ),
+                                              ]
+                                            ),
+                                          //GENRES ROW//
+                                          Row(
+                                            children: [
+                                              Text('Genres : ',
+                                                style: GoogleFonts.montserrat(
+                                                   fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                  padding: EdgeInsets.only(left: 20),
+                                                  height: 50.0,
+                                                  child:  ListView.builder(
+                                                    scrollDirection: Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount: snapshot.data!.genres.length,
+                                                    itemBuilder: (context, index){
+                                                    return Padding(
+                                                      padding: EdgeInsets.only(right: 5),
+                                                      child: TextButton(
+                                                        child: Text(
+                                                          '${snapshot.data?.genres[index].name}',
+                                                          style: GoogleFonts.montserrat(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                        onPressed: (){
+                                                            print('${snapshot.data?.genres[index].malId}');
+                                                        },
+                                                      )
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            )
+                                          ],
                                         ),
-                                      ),
-                                      Text(
-                                        '${snapshot.data!.synopsis}',
-                                        style: GoogleFonts.montserrat(
-                                          height:  2,
-                                          fontSize: 14,
-                                        ),
-                                      ),
-                                    ],
+                                        //AUTHORS
+                                        Row(
+                                            children: [
+                                              Text('Authors : ',
+                                                style: GoogleFonts.montserrat(
+                                                   fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                              ),
+                                              Flexible(
+                                                child: Container(
+                                                  padding: EdgeInsets.only(left: 10),
+                                                  height: 50.0,
+                                                  child:  ListView.builder(
+                                                    scrollDirection: Axis.horizontal,
+                                                    shrinkWrap: true,
+                                                    itemCount: snapshot.data!.authors.length,
+                                                    itemBuilder: (context, index){
+                                                    return Padding(
+                                                      padding: EdgeInsets.only(right: 5),
+                                                      child: TextButton(
+                                                        child: Text(
+                                                          '${snapshot.data?.authors[index].author_name}',
+                                                          style: GoogleFonts.montserrat(
+                                                            fontSize: 14,
+                                                            color: Colors.black,
+                                                          ),
+                                                        ),
+                                                        onPressed: (){
+                                                            print('${snapshot.data?.genres[index].malId}');
+                                                        },
+                                                      )
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    )
                                   )
-                                )
-                              ],
-                            )
+                                ],
+                              ),
+                            ],
+                          )
                         ),
                       ],
                     ),

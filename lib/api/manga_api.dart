@@ -34,7 +34,7 @@ class topmangalistApi {
     final respBody = json.decode(response.body);
 
     if (response.statusCode == 200) {
-      print(respBody);
+      //print(respBody);
       var topMangasJson = respBody['data'] as List;
       return topMangasJson.map((topmanga) => topManga.fromJson(topmanga)).toList();
     } else {
@@ -57,3 +57,22 @@ class topmangalistApi {
     }
 
   }
+
+class RecentMangaRecApi {
+  static Future<List<RecentMangaRecommendation>> getRecentMangaRec() async{
+    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/recommendations/manga'));
+    final respBody = json.decode(response.body);
+
+    if (response.statusCode == 200) {
+      //print(respBody['data'][0]['entry']);
+      //var RecentMangaRecommendationJson = respBody['data'][0]['entry'] as List;
+      var RecentMangaRecommendationJson = respBody['data'] as List;
+      return RecentMangaRecommendationJson.map((recentmangarecommendation) => RecentMangaRecommendation.fromJson(recentmangarecommendation)).toList();
+      // Map<String, dynamic> map = respBody;
+      // List<dynamic> data = map["entry"];
+    } else {
+      throw Exception('Failed to load anime');
+    }
+
+  }
+}

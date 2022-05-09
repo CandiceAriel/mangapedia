@@ -19,11 +19,13 @@ class home extends StatelessWidget {
             padding: EdgeInsets.all(20),
             child: Column(
               children: [
+                topmangaList(),
                 //mangaList(),
-                //topmangaList(),
+                //recentmangarecList(),
+                //recentanimerecList(),
                 //animeList(),
                 topanimeList(),
-                animerecList(),
+                //animerecList(),
               ],
             ),
           ),
