@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mangapedia/api/manga_api.dart';
 import 'package:mangapedia/model/mangadetail.dart';
-import 'package:mangapedia/widget/mangaCard.dart';
 
 void toDetailsScreen(BuildContext context, int malID) {
   Navigator.push(

@@ -5,7 +5,6 @@ import 'package:google_fonts/google_fonts.dart';
 import '../model/anime.dart';
 import '../model/topAnime.dart';
 import '../api/anime_api.dart';
-import '../widget/mangaCard.dart';
 import '../widget/animeCard.dart';
 import '../widget/animeRecCard.dart';
 

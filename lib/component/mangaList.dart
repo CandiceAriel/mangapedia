@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:convert';
 
 //import components
 import '../model/manga.dart';
 import '../api/manga_api.dart';
 import '../model/topManga.dart';
 import '../widget/mangaCard.dart';
-import '../widget/mangaRecCard.dart';
-import '../model/anime.dart';
 import '../api/anime_api.dart';
 
 //Manga schedule

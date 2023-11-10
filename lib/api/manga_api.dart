@@ -1,8 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/mangadex_library.dart' as lib;
 
 import '../model/manga.dart';
 import '../model/topManga.dart';
@@ -45,7 +43,7 @@ class topmangalistApi {
 }
 
  Future<mangadetail> getMangaDetail(int malID) async{
-    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/manga' + '/${malID}'));
+    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/manga' + '/$malID'));
     
     if (response.statusCode == 200) {
       final respBody = json.decode(response.body);

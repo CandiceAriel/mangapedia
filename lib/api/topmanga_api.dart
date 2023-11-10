@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import '../model/topmanga.dart';
 import 'package:http/http.dart' as http;
-import 'package:mangadex_library/mangadex_library.dart' as lib;
 
 class topmangalistApi {
   static Future<List<topManga>> getTopManga() async{

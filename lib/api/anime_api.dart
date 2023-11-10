@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mangapedia/model/detail.dart';
 
 import '../model/anime.dart';
 import '../model/topAnime.dart';
-import '../model/detail.dart';
 
 class animelistApi {
   static Future<List<Anime>> getAnime() async{
@@ -45,7 +43,7 @@ class topanimelistApi {
 
 class animeRecApi {
   static Future<List<AnimeRecommendation>> getAnimeRec(int recaniID) async{
-    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/anime' + '/${recaniID}' + '/recommendations'));
+    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/anime' + '/$recaniID' + '/recommendations'));
     final respBody = json.decode(response.body);
 
     if (response.statusCode == 200) {
@@ -75,7 +73,7 @@ class RecentAnimeRecommendationApi {
 }
 
   Future<animeDetail> getAnimeDetail(int malID) async{
-    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/anime' + '/${malID}'));
+    final response = await http.get(Uri.parse('https://api.jikan.moe/v4/anime' + '/$malID'));
     
     if (response.statusCode == 200) {
       final respBody = json.decode(response.body);
